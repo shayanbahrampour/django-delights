@@ -1,0 +1,11 @@
+{% extends "F:\projects\djangodelights\djangodelights\home\templates\base.html" %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit"/>
+    </form>
+<button onclick="location.href='http://127.0.0.1:8000/delete_menu/{{ id }}'">Delete</button>
+
+{% endblock %}

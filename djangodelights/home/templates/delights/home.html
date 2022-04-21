@@ -1,0 +1,58 @@
+{% extends "F:\projects\djangodelights\djangodelights\home\templates\base.html" %}
+
+{% block content %}
+<h1>{{ title_field }}</h1>
+
+<table class="styled-table">
+    <form action="http://127.0.0.1:8000/create_menu/">
+        <input type="submit" value="Add Menu Item" />
+    </form>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Ingredient</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menu_data %}
+        <tr>
+            <td>{{ menu.name }}</td>
+            <td>{{ menu.price }}</td>
+            <td>{{ menu.ingredient.get.name }}</td>
+            <td>
+                <a href="/update_menu/{{menu.id}}">edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<table class="styled-table">
+    <form action="http://127.0.0.1:8000/create_ingredient/">
+        <input type="submit" value="Add Ingredient Item" />
+    </form>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>quantity</th>
+            <th>unit</th>
+            <th>status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in ingredient_data %}
+        <tr>
+            <td>{{ ingredient.name }}</td>
+            <td>{{ ingredient.price }}</td>
+            <td>{{ ingredient.quantity }}</td>
+            <td>{{ ingredient.unit }}</td>
+            <td>
+                <a href="/update_ing/{{ingredient.id}}">edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
